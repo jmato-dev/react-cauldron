@@ -19,12 +19,12 @@ In the project directory type:
 
 ## Commands
 
-| Alias      | Description                              | Command                               |
-| ---------- | ---------------------------------------- | ------------------------------------- |
-| build      | make a production build                  | webpack --mode production             |
-| devel      | make a development build                 | webpack --mode development            |
-| lint       | lint files on project                    | eslint .                              |
-| lint:fix   | fix all auto-fixable linting problems    | eslint --fix .                        |
-| start      | start development server                 | webpack-dev-server --mode development |
-| test       | run all tests on project                 | jest                                  |
-| test:watch | watch tests on project and show coverage | jest --watchAll --coverage            |
+| Command    | Description                              |
+| ---------- | ---------------------------------------- |
+| build      | make a production build                  |
+| devel      | make a development build                 |
+| lint       | lint files on project                    |
+| lint:fix   | fix all auto-fixable linting problems    |
+| start      | start development server                 |
+| test       | run all tests on project                 |
+| test:watch | watch tests on project and show coverage |
