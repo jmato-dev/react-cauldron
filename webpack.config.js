@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function exports(env, argv) {
   return {
+    devtool: !env.production && 'eval-source-map',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, `dist/${argv.mode}`),
