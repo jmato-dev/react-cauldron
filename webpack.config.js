@@ -2,9 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = function exports(env, argv) {
+module.exports = function exports(_env, argv) {
+  const production = argv.mode === 'production';
+
   return {
-    devtool: !env.production && 'eval-source-map',
+    devtool: !production && 'eval-source-map',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, `dist/${argv.mode}`),
@@ -23,9 +25,7 @@ module.exports = function exports(env, argv) {
           test: /\.css$/,
           use: [
             {
-              loader: env.production
-                ? MiniCssExtractPlugin.loader
-                : 'style-loader',
+              loader: production ? MiniCssExtractPlugin.loader : 'style-loader',
             },
             { loader: 'css-loader' },
           ],
@@ -36,7 +36,7 @@ module.exports = function exports(env, argv) {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
       }),
-      env.production &&
+      production &&
         new MiniCssExtractPlugin({
           filename: 'assets/css/[name].[contenthash:8].css',
         }),
