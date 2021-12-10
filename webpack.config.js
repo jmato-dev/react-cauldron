@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = function exports(_env, argv) {
   const production = argv.mode === 'production';
@@ -41,5 +42,20 @@ module.exports = function exports(_env, argv) {
           filename: 'assets/css/[name].[contenthash:8].css',
         }),
     ].filter(Boolean),
+    optimization: {
+      minimize: production,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            mangle: {
+              safari10: true,
+            },
+            format: {
+              comments: false,
+            },
+          },
+        }),
+      ],
+    },
   };
 };
