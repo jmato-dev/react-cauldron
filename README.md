@@ -10,6 +10,7 @@ A boilerplate for ReactJS web apps with initial configs for Webpack, Jest, ESLin
 - Jest 27 (with testing-library)
 - ESLint 8 (airbnb + jest)
 - Prettier 2
+- PropTypes
 
 ## Use
 
