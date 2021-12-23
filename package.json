@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "webpack --mode production",
-    "devel": "webpack --mode development",
+    "build:devel": "webpack --mode development",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "start": "webpack-dev-server --mode development",
