@@ -12,9 +12,37 @@ module.exports = function exports(_env, argv) {
     output: {
       path: path.resolve(__dirname, `dist/${argv.mode}`),
       filename: 'bundle.js',
+      assetModuleFilename: 'assets/misc/[hash][ext][query]',
     },
     module: {
       rules: [
+        {
+          test: /\.(gif|jpg|png|webp)$/,
+          type: 'asset',
+          generator: {
+            filename: 'assets/media/images/[hash][ext][query]',
+          },
+        },
+        {
+          test: /\.svg$/,
+          type: 'asset',
+          resourceQuery: '?url',
+          generator: {
+            filename: 'assets/media/images/[hash][ext][query]',
+          },
+        },
+        {
+          test: /\.(eot|otf|ttf|woff|woff2)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'assets/fonts/[hash][ext][query]',
+          },
+        },
+        {
+          test: /\.svg$/,
+          issuer: /\.(js|jsx)$/,
+          use: ['@svgr/webpack'],
+        },
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
