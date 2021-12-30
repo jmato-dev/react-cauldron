@@ -2,7 +2,7 @@
 /node_modules
 
 # testing
-/coverage
+/jest/coverage
 
 # production
 /dist
