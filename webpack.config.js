@@ -24,11 +24,24 @@ module.exports = function exports(_env, argv) {
           },
         },
         {
+          test: /\.svg$/,
+          type: 'asset',
+          resourceQuery: '?url',
+          generator: {
+            filename: 'assets/media/images/[hash][ext][query]',
+          },
+        },
+        {
           test: /\.(eot|otf|ttf|woff|woff2)$/,
           type: 'asset/resource',
           generator: {
             filename: 'assets/fonts/[hash][ext][query]',
           },
+        },
+        {
+          test: /\.svg$/,
+          issuer: /\.(js|jsx)$/,
+          use: ['@svgr/webpack'],
         },
         {
           test: /\.(js|jsx)$/,
